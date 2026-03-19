@@ -1,14 +1,24 @@
 #include "main.hpp"
-#include <SFML/System/Vector2.hpp>
 
 int main() {
-  sf::RenderWindow window = setWindow();
+  sf::RenderWindow window {setWindow()};
 
-  sf::Sprite blackBoard = setBoardBlack();
-  sf::Sprite whiteBoard = setBoardWhite();
+  // Boards Group
+  sf::Sprite blackBoard {setBoardBlack()};
+  sf::Sprite whiteBoard {setBoardWhite()};
+
+  // Buttons Group
+  sf::Sprite whiteClicked{setWhiteClicked()};
+  sf::Sprite whiteNormal{setWhiteNormal()};
+  sf::Sprite blackClicked{setBlackClicked()};
+  sf::Sprite blackNormal{setBlackNormal()};
+
+  // Slider
+  sf::Sprite sliderLeft{setSliderLeft()};
+  sf::Sprite sliderRight{setSliderRight()};
 
   while (window.isOpen()) {
-    while (const std::optional event = window.pollEvent()) {
+    while (const std::optional event { window.pollEvent()}) {
       if (event->is<sf::Event::Closed>()) {
         window.close();
       }

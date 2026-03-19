@@ -1,5 +1,3 @@
-#pragma once
-
 #define LOGO_HEIGHT 64
 #define LOGO_WIDTH 64
 
