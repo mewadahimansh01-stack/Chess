@@ -3,20 +3,26 @@
  of the images and any bugs appear please check here first.
  */
 
-#include "Black_Clicked.hpp"
-#include "Black_Normal.hpp"
-#include "Chess_black_perspective_board.hpp"
-#include "Chess_white_perspective_board.hpp"
-#include "White_Clicked.hpp"
-#include "White_Normal.hpp"
-#include "logo.hpp"
+#include "assets/Black_Clicked.hpp"
+#include "assets/Black_Normal.hpp"
+#include "assets/Chess_black_perspective_board.hpp"
+#include "assets/Chess_white_perspective_board.hpp"
+#include "assets/White_Clicked.hpp"
+#include "assets/White_Normal.hpp"
+#include "assets/logo.hpp"
 #include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Color.hpp>
+
+enum class OPPONENT: char {AI, HUMAN};
+enum class SIDE: char {BLACK, WHITE};
 
 // Change this when you want to change the window sizes and please don't chnage
 // it in any of the functions'
 constexpr unsigned int WINDOW_WIDTH{800};
 constexpr unsigned int WINDOW_HEIGHT{600};
+
+constexpr sf::Color lightBeige(245, 222, 179, 255);
+constexpr sf::Color mutedGreen(198, 221, 198, 255);
+constexpr sf::Color gentleCream(255, 240, 220, 255);
 
 const sf::Texture blackBoardTexture(sf::Image(
     {CHESS_BLACK_PERSPECTIVE_BOARD_WIDTH, CHESS_BLACK_PERSPECTIVE_BOARD_HEIGHT},
@@ -34,27 +40,33 @@ const sf::Texture blackNormal(
 const sf::Texture whiteNormal(
     sf::Image({WHITE_NORMAL_WIDTH, WHITE_NORMAL_HEIGHT}, White_Normal));
 
-static const inline sf::Sprite setWhiteClicked() {
+namespace clicked {
+static const inline sf::Sprite white() {
   sf::Sprite WC(WhiteClicked);
   return WC;
 }
 
-static const inline sf::Sprite setBlackClicked() {
+static const inline sf::Sprite black() {
   sf::Sprite BC(blackClicked);
   return BC;
 }
+} // namespace clicked
 
-static const inline sf::Sprite setWhiteNormal() {
+namespace normal {
+static const inline sf::Sprite white() {
   sf::Sprite WN(whiteNormal);
   return WN;
 }
 
-static const inline sf::Sprite setBlackNormal() {
+static const inline sf::Sprite black() {
   sf::Sprite BN(blackNormal);
   return BN;
 }
+} // namespace normal
 
 static const inline sf::RenderWindow setWindow() {
+  // Changing the window dimensions here might screw up the presentation on
+  // screen
   sf::RenderWindow window(sf::VideoMode({WINDOW_WIDTH, WINDOW_HEIGHT}), "Chess",
                           sf::Style::Close);
   const sf::VideoMode desktopMode{sf::VideoMode::getDesktopMode()};
@@ -68,7 +80,8 @@ static const inline sf::RenderWindow setWindow() {
   return window;
 }
 
-static const inline sf::Sprite setBoardBlack() {
+namespace board {
+static const inline sf::Sprite black() {
   // Considering that the sprites were not scaled from their texture
   // counterparts and are of the same size
   const sf::Vector2f boardPosition{
@@ -81,7 +94,7 @@ static const inline sf::Sprite setBoardBlack() {
   return blackBoard;
 }
 
-static const inline sf::Sprite setBoardWhite() {
+static const inline sf::Sprite white() {
   // Considering that the sprites were not scaled from their texture
   // counterparts and are of the same size
   const sf::Vector2f boardPosition{
@@ -93,3 +106,4 @@ static const inline sf::Sprite setBoardWhite() {
   whiteBoard.setPosition(boardPosition);
   return whiteBoard;
 }
+} // namespace board

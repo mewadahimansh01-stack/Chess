@@ -4,14 +4,17 @@ int main() {
   sf::RenderWindow window {setWindow()};
 
   // Board
-  sf::Sprite blackBoard {setBoardBlack()};
-  sf::Sprite whiteBoard {setBoardWhite()};
+  sf::Sprite blackBoard {board::black()};
+  sf::Sprite whiteBoard {board::white()};
 
   // Button
-  sf::Sprite whiteClicked{setWhiteClicked()};
-  sf::Sprite whiteNormal{setWhiteNormal()};
-  sf::Sprite blackClicked{setBlackClicked()};
-  sf::Sprite blackNormal{setBlackNormal()};
+  sf::Sprite whiteClicked{clicked::white()};
+  sf::Sprite whiteNormal{normal::white()};
+  sf::Sprite blackClicked{clicked::black()};
+  sf::Sprite blackNormal{normal::black()};
+
+  auto opponent {OPPONENT::AI};
+  auto side {SIDE::WHITE};
 
   while (window.isOpen()) {
     while (const std::optional event { window.pollEvent()}) {
@@ -20,7 +23,7 @@ int main() {
       }
     }
 
-    window.clear(sf::Color::Cyan);
+    window.clear(mutedGreen);
 
     window.display();
   }
