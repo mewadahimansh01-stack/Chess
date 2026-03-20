@@ -3,19 +3,15 @@
 int main() {
   sf::RenderWindow window {setWindow()};
 
-  // Boards Group
+  // Board
   sf::Sprite blackBoard {setBoardBlack()};
   sf::Sprite whiteBoard {setBoardWhite()};
 
-  // Buttons Group
+  // Button
   sf::Sprite whiteClicked{setWhiteClicked()};
   sf::Sprite whiteNormal{setWhiteNormal()};
   sf::Sprite blackClicked{setBlackClicked()};
   sf::Sprite blackNormal{setBlackNormal()};
-
-  // Slider
-  sf::Sprite sliderLeft{setSliderLeft()};
-  sf::Sprite sliderRight{setSliderRight()};
 
   while (window.isOpen()) {
     while (const std::optional event { window.pollEvent()}) {
@@ -25,8 +21,6 @@ int main() {
     }
 
     window.clear(sf::Color::Cyan);
-
-    window.draw(blackBoard);
 
     window.display();
   }

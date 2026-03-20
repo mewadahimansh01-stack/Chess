@@ -42,3 +42,4 @@
 
 # Cmake specific
 build/
+.cache

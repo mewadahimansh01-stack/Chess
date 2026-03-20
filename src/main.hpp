@@ -1,3 +1,8 @@
+/*
+ Some of the values related to images have been hard coded, so if you change any
+ of the images and any bugs appear please check here first.
+ */
+
 #include "Black_Clicked.hpp"
 #include "Black_Normal.hpp"
 #include "Chess_black_perspective_board.hpp"
@@ -5,13 +10,14 @@
 #include "White_Clicked.hpp"
 #include "White_Normal.hpp"
 #include "logo.hpp"
-#include "slider.hpp"
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Color.hpp>
 
 // Change this when you want to change the window sizes and please don't chnage
 // it in any of the functions'
 constexpr unsigned int WINDOW_WIDTH{800};
 constexpr unsigned int WINDOW_HEIGHT{600};
+
 const sf::Texture blackBoardTexture(sf::Image(
     {CHESS_BLACK_PERSPECTIVE_BOARD_WIDTH, CHESS_BLACK_PERSPECTIVE_BOARD_HEIGHT},
     Chess_black_perspective_board));
@@ -27,16 +33,6 @@ const sf::Texture blackNormal(
     sf::Image({BLACK_NORMAL_WIDTH, BLACK_NORMAL_HEIGHT}, Black_Normal));
 const sf::Texture whiteNormal(
     sf::Image({WHITE_NORMAL_WIDTH, WHITE_NORMAL_HEIGHT}, White_Normal));
-
-const sf::Texture sliderr(sf::Image({SLIDER_WIDTH, SLIDER_HEIGHT}, slider));
-
-static const inline sf::Sprite setSliderLeft() {
-  return sf::Sprite(sliderr, {{0, 0}, {64, 64}});
-}
-
-static const inline sf::Sprite setSliderRight() {
-  return sf::Sprite(sliderr, {{0, 64}, {64, 64}});
-}
 
 static const inline sf::Sprite setWhiteClicked() {
   sf::Sprite WC(WhiteClicked);
