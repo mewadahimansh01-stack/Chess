@@ -13,6 +13,5 @@ clean:
 	rm -rf build/
 
 format:
-	cd src && \
-	find . -not -path "./build/*" -name "*.cpp" -o -name "*.hpp" -print0 | xargs -0 clang-format -i
-
+    format:
+	find src -type f \( -name "*.cpp" -o -name "*.hpp" \) -not -path "*/build/*" -print0 | xargs -0 clang-format -i -style=LLVM

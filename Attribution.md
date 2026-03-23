@@ -18,3 +18,8 @@ By <a href="https://ok-lavender.itch.io/free-pixel-art-button-pack" target="_bla
 ## Slider
 
 Vectors and icons by <a href="https://www.svgrepo.com" target="_blank">SVG Repo</a>
+
+
+## Fonts
+
+Attribution in src/assets/OFL.txt
