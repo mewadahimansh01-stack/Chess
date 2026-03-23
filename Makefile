@@ -14,4 +14,4 @@ clean:
 
 format:
     format:
-	find src -type f \( -name "*.cpp" -o -name "*.hpp" \) -not -path "*/build/*" -print0 | xargs -0 clang-format -i -style=LLVM
+	find src -type f \( -name "*.cpp" -o -name "*.hpp" \) -not -path "*/build/*" -print0 | xargs -0 clang-format -i -style=Microsoft
