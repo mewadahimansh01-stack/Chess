@@ -1,3 +1,9 @@
+# CMake
+build
+
+#Clangd
+.cache
+
 # Prerequisites
 *.d
 
